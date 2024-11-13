@@ -98,22 +98,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script>
-
-  const BTC_API_URL = "https://api.blockchair.com/bitcoin/dashboards/address/";
-
-async function fetchBalances() {
-  totalBTCBalance = 0;
-  for (const address of addresses) {
-    const response = await fetch(BTC_API_URL + address);
-    const data = await response.json();
-    const balanceBTC = data.data[address].balance / 1e8; // Convert satoshis to BTC
-    totalBTCBalance += balanceBTC;
-  }
-  calculateMonthlyPortfolioValues();
-  updatePortfolioValue();
-}
-
-  //  const BTC_API_URL = "https://blockchain.info/q/addressbalance/";
+    const BTC_API_URL = "https://blockchain.info/q/addressbalance/";
     const HISTORICAL_RATE_API_URL = "https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=eur&days=365";
     let addresses = JSON.parse(localStorage.getItem("bitcoinAddresses")) || [];
     let historicalRates = []; // Array to store last year's BTC-to-EUR rates
@@ -168,7 +153,7 @@ async function fetchBalances() {
     }
 
     // Fetch balance for each address
-  /*  async function fetchBalances() {
+    async function fetchBalances() {
       totalBTCBalance = 0;
       for (const address of addresses) {
         try {
@@ -181,7 +166,7 @@ async function fetchBalances() {
       }
       calculateHistoricalPortfolioValues();
     }
-*/
+
     // Calculate historical portfolio value in EUR
     function calculateHistoricalPortfolioValues() {
       balanceHistory = historicalRates.map(({ date, rate }) => ({
